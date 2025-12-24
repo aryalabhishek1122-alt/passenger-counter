@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Passenger Counter</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+<div class="counter-box">
+    <h1>Passenger Counter</h1>
+
+    <div class="count-display" id="count">0</div>
+    <div id="saved"></div> <!-- history will appear here -->
+
+    <div class="buttons">
+        <button class="btnadd">ADD</button>
+        <button class="btnsave">SAVE</button>
+        <button class="btncame">CAME</button>
+    </div>
+</div>
+
+<script>
+    let cd = document.getElementById("count");
+    let btnAdd = document.getElementsByClassName("btnadd")[0];
+    let btnCame = document.getElementsByClassName("btncame")[0];
+    let btnSave = document.getElementsByClassName("btnsave")[0];
+    let save = document.getElementById("saved");
+
+    let count = 0;
+    let store = 0;
+
+    btnAdd.addEventListener("click", function () {
+        count += 1;
+        cd.textContent = count;
+    });
+
+    btnSave.addEventListener("click", function () {
+        store += count;
+        if(count > 0){
+            save.innerHTML += count + " ➜ "; 
+        }
+        count = 0;
+        cd.textContent = count;
+    });
+
+    btnCame.addEventListener("click", function () {
+        cd.textContent = store;
+    });
+</script>
+
+    </body>
+    </html>
